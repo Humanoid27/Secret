@@ -14,10 +14,10 @@ local sec1 = tab:Section("Z")
 
 -----------------------------------------------------------------------------------------------------------------------------------
 --BOW
-local toggle = sec:Toggle("Toggle Spam", false,"Toggle", function(th)
+local toggle = sec0:Toggle("Toggle Spam", false,"Toggle", function(th)
      Tbow = tb
 end)
-sec:Bind("Bow", Enum.UserInputType.MouseButton1, true, "BindHold", function(f0)
+sec0:Bind("Bow", Enum.UserInputType.MouseButton1, true, "BindHold", function(f0)
     bow = f0
     print(f0)
     if Tbow then
