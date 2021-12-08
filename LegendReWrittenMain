@@ -23,7 +23,7 @@ sec0:Bind("Bow", Enum.UserInputType.MouseButton1, true, "BindHold", function(f0)
     if Tbow then
         SBow(a,b);
     else
-        TBow(a,b);
+        TBA(a,b);
     end
 end)
 ---------------------------------------------------------------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ function SBow(a,b)
         game:GetService("Players").LocalPlayer.Character.Bow.SwordScript.Shoot:FireServer(unpack(args))
     end
 end
-function TBow(a,b)
+function TBA(a,b)
     bow=false
 end    
 ---HERO--------------------------------------------------------------------------------------------------------------
@@ -267,4 +267,4 @@ end
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 UserInputService.InputBegan:connect(SCH, SCD, SCS, SGate, SZ, SOB, SCB, SKB, SBow)
-UserInputService.InputEnded:connect(TCH, TCD, TCS, TGate, TZ, TOB, TCB, TKB, TBow)
+UserInputService.InputEnded:connect(TCH, TCD, TCS, TGate, TZ, TOB, TCB, TKB, TBA)
