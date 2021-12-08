@@ -1,0 +1,235 @@
+local hero
+local Z
+local plr=game:GetService("Players").LocalPlayer
+local mouse=plr:GetMouse()
+
+local SolarisLib = loadstring(game:HttpGet("https://solarishub.dev/SolarisLib.lua"))()
+local win = SolarisLib:New({ Name = "Humanoid Hub", FolderToSave = "Humanoid Hub" })
+local tab = win:Tab("Main")
+
+local sec = tab:Section("Hero")
+local sec1 = tab:Section("Z")
+local toggle = sec:Toggle("Toggle Spam", false,"Toggle", function(th)
+     Thero = th
+    end)
+sec:Bind("GateofBabylon SKILL", Enum.UserInputType.MouseButton1, true, "BindHold", function(f1)
+    hero = f1
+    print(f1)
+    if Thero then
+        SGate(a,b);
+    else
+        TGate(a,b);
+    end
+end)
+
+sec:Bind("ChainStrike SKILL", Enum.UserInputType.MouseButton1, true, "BindHold", function(f1)
+    hero = f1
+    print(f1) 
+    if Thero then
+        SCS(a,b);
+    else
+        TCS(a,b);
+    end
+end)
+
+sec:Bind("ChainDestruction SKILL", Enum.UserInputType.MouseButton1, true, "BindHold", function(f1)
+    hero = f1
+    print(f1) 
+    if Thero then
+        SCD(a,b);
+    else
+        TCD(a,b);
+    end
+end)
+
+sec:Bind("ChainsofHeaven SKILL", Enum.UserInputType.MouseButton1, true, "BindHold", function(f1)
+    hero = f1
+    print(f1) 
+    if Thero then
+        SCH(a,b);
+    else
+        TCH(a,b);
+    end
+end)
+----------------------------------------------------------------------------
+local toggle = sec1:Toggle("Toggle Spam", false,"Toggle", function(tz)
+    Tz = tz
+end)
+
+sec1:Bind("Kame SKILL(OP)", Enum.UserInputType.MouseButton1, true, "BindHold", function(f2)
+    Z = f2
+    print(f2)
+    if Tz then
+        SZ(a,b);
+    else
+        TZ(a,b);
+    end
+end)
+
+sec1:Bind("Omega Blaster SKILL", Enum.UserInputType.MouseButton1, true, "BindHold", function(f2)
+    Z = f2
+    print(f2)
+    if Tz then
+        SOB(a,b);
+    else
+        TOB(a,b);
+    end
+end)
+
+sec1:Bind("CannonBeam SKILL", Enum.UserInputType.MouseButton1, true, "BindHold", function(f2)
+    Z = f2
+    print(f2)
+    if Tz then
+        SCB(a,b);
+    else
+        TCB(a,b);
+    end
+end)
+
+sec1:Bind("KiBlast SKILL", Enum.UserInputType.MouseButton1, true, "BindHold", function(f2)
+    Z = f2
+    print(f2)
+    if Tz then
+        SKB(a,b);
+    else
+        TKB(a,b);
+    end
+end)
+
+
+
+
+
+
+---FUNCTION-------------------------------------------------------------------------------------------------------
+---HERO--------------------------------------------------------------------------------------------------------------
+---GateofBabylon
+function SGate(a,b)
+    while hero do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        }
+        game:GetService("Players").LocalPlayer.Character.GateofBabylon.ServerScript.Charge:FireServer(unpack(args))
+    end
+end
+function TGate(a,b)
+    hero=false
+end    
+---------------------------------------------------------------------------------------------------------------------------------------------
+--ChainStrike
+function SCS(a,b)
+    while hero do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        }    
+        game:GetService("Players").LocalPlayer.Character.ChainStrike.ServerScript.Charge:FireServer(unpack(args))
+    end
+end
+function TCS(a,b)
+    hero=false
+end   
+---------------------------------------------------------------------------------------------------------------------------------------------
+--ChainDestruction
+function SCD(a,b)
+    while hero do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        }
+        game:GetService("Players").LocalPlayer.Character.ChainDestruction.ServerScript.Charge:FireServer(unpack(args))
+    end
+end
+function TSD(a,b)
+    hero=false
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+--ChainsofHeaven
+function SCH(a,b)
+    while hero do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        }
+        
+        game:GetService("Players").LocalPlayer.Character.ChainsofHeaven.ServerScript.Charge:FireServer(unpack(args))
+    end
+end
+
+function TCH(a,b)
+    hero=false
+end
+     
+---------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------
+--Kame
+function SZ(a,b)
+    while Z do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        } 
+        game:GetService("Players").LocalPlayer.Character.Kame.ServerScript.Throw:FireServer(unpack(args))
+    end
+end
+function TZ(a,b)
+    Z=false
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+--Omega Blaster
+function SOB(a,b)
+    while Z do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        }
+        
+        game:GetService("Players").LocalPlayer.Character.OmegaBlaster.ServerScript.Throw:FireServer(unpack(args))
+    end
+end
+function TOB(a,b)
+    Z=false
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+--CannonBeam
+function SCB(a,b)
+    while Z do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        }
+        game:GetService("Players").LocalPlayer.Character.CannonBeam.ServerScript.Charge:FireServer(unpack(args))
+    end
+end
+function TCB(a,b)
+    Z=false
+end
+---------------------------------------------------------------------------------------------------------------------------------------------
+--KiBlast
+function SKB(a,b)
+    while Z do
+        wait()
+        local args = {
+            [1] = game:GetService("Players").LocalPlayer.Character,
+            [2] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]]
+        }
+        game:GetService("Players").LocalPlayer.Character.KiBlast.ServerScript.Charge:FireServer(unpack(args))
+        
+    end
+end
+function TKB(a,b)
+    Z=false
+end
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+UserInputService.InputBegan:connect(SCH, SCD, SCS, SGate, SZ, SOB, SCB, SKB)
+UserInputService.InputEnded:connect(TCH, TCD, TCS, TGate, TZ, TOB, TCB, TKB)
