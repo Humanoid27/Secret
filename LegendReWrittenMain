@@ -1,4 +1,5 @@
 local hero
+local bow
 local Z
 local plr=game:GetService("Players").LocalPlayer
 local mouse=plr:GetMouse()
@@ -7,8 +8,26 @@ local SolarisLib = loadstring(game:HttpGet("https://solarishub.dev/SolarisLib.lu
 local win = SolarisLib:New({ Name = "Humanoid Hub", FolderToSave = "Humanoid Hub" })
 local tab = win:Tab("Main")
 
+local sec0 = tab:Section("Bow")
 local sec = tab:Section("Hero")
 local sec1 = tab:Section("Z")
+
+-----------------------------------------------------------------------------------------------------------------------------------
+--BOW
+local toggle = sec:Toggle("Toggle Spam", false,"Toggle", function(th)
+     Tbow = tb
+end)
+sec:Bind("Bow", Enum.UserInputType.MouseButton1, true, "BindHold", function(f0)
+    bow = f0
+    print(f0)
+    if Tbow then
+        SGate(a,b);
+    else
+        TGate(a,b);
+    end
+end)
+---------------------------------------------------------------------------------------------------------------------------------------
+--HERO
 local toggle = sec:Toggle("Toggle Spam", false,"Toggle", function(th)
      Thero = th
     end)
@@ -51,7 +70,8 @@ sec:Bind("ChainsofHeaven SKILL", Enum.UserInputType.MouseButton1, true, "BindHol
         TCH(a,b);
     end
 end)
-----------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---Z ARTIFACT
 local toggle = sec1:Toggle("Toggle Spam", false,"Toggle", function(tz)
     Tz = tz
 end)
@@ -102,6 +122,21 @@ end)
 
 
 ---FUNCTION-------------------------------------------------------------------------------------------------------
+---BOW
+function SBow(a,b)
+    while bow do
+        wait()
+        local args = {
+            [1] = Vector3.new(mouse.Hit.X, mouse.Hit.Y, mouse.Hit.Z) --[[Vector3]],
+            [2] = 1
+        }
+
+        game:GetService("Players").LocalPlayer.Character.Bow.SwordScript.Shoot:FireServer(unpack(args))
+    end
+end
+function TBow(a,b)
+    bow=false
+end    
 ---HERO--------------------------------------------------------------------------------------------------------------
 ---GateofBabylon
 function SGate(a,b)
@@ -231,5 +266,5 @@ function TKB(a,b)
 end
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
-UserInputService.InputBegan:connect(SCH, SCD, SCS, SGate, SZ, SOB, SCB, SKB)
-UserInputService.InputEnded:connect(TCH, TCD, TCS, TGate, TZ, TOB, TCB, TKB)
+UserInputService.InputBegan:connect(SCH, SCD, SCS, SGate, SZ, SOB, SCB, SKB, SBow)
+UserInputService.InputEnded:connect(TCH, TCD, TCS, TGate, TZ, TOB, TCB, TKB, TBow)
