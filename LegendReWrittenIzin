@@ -8,4 +8,6 @@ local izin = {
  
 if table.find(izin, orang) then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Humanoid27/Project/main/LegendReWrittenMain?token=AWBCXDB3OBFBRMI64X2LLU3BWABOW"))()
+    else
+print("LU SIAPA")
 end
