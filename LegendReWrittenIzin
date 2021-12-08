@@ -1,0 +1,11 @@
+local orang = game:GetService("Players").LocalPlayer.UserId
+
+
+local izin = {
+    1687612116,
+
+}
+ 
+if table.find(izin, orang) then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Humanoid27/Project/main/LegendReWrittenMain?token=AWBCXDAUXPJBV46EOU7PPSTBV73ZS"))()
+end
