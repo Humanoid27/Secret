@@ -21,9 +21,9 @@ sec0:Bind("Bow", Enum.UserInputType.MouseButton1, true, "BindHold", function(f0)
     bow = f0
     print(f0)
     if Tbow then
-        SGate(a,b);
+        SBow(a,b);
     else
-        TGate(a,b);
+        TBow(a,b);
     end
 end)
 ---------------------------------------------------------------------------------------------------------------------------------------
