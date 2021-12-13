@@ -1,0 +1,24 @@
+local test = {1,2,4,2,3,4,2,3,4,"A", "B", "A"}
+
+function RemoveTableDupes(tab)
+	local hash = {}
+	local res = {}
+	for _,v in ipairs(tab) do
+		if (not hash[v]) then
+			res[#res+1] = v
+			hash[v] = true
+		end
+	end
+	return res
+end
+
+test = RemoveTableDupes(test)
+print(test)
+
+--[[Output:       [1] = 1,
+                  [2] = 2,
+                  [3] = 4,
+                  [4] = 3,
+                  [5] = "A",
+                  [6] = "B"
+]]
