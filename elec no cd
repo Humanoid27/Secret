@@ -1,0 +1,141 @@
+local Quirk = game.Players.LocalPlayer.Backpack["Electricity Quirk"]
+local bb = 99
+local v1 = {};
+local v2 = {
+    Electric_Z = {
+        Module_Name = "Electric_Z",
+        Name = "Electric Bolt",
+        MaxHoldTime = bb,
+        Last_Did = 0,
+        CoolDown = 0,
+        QuirkMastery = 0
+    },
+    Electric_X = {
+        Module_Name = "Electric_X",
+        Name = "Electric Eel",
+        MaxHoldTime = bb,
+        Last_Did = 0,
+        CoolDown = 0,
+        QuirkMastery = 0
+    },
+    Electric_C = {
+        Module_Name = "Electric_C",
+        Name = "Shockwave Stomp",
+        MaxHoldTime = bb,
+        Last_Did = 0,
+        CoolDown = 0,
+        QuirkMastery = 0
+    },
+    Electric_V = {
+        Module_Name = "Electric_V",
+        Name = "2,000,000 Volt Discharge",
+        MaxHoldTime = bb,
+        Last_Did = 0,
+        CoolDown = 0,
+        QuirkMastery = 0
+    },
+    Electric_B = {
+        Module_Name = "Electric_B",
+        Name = "Lightning Flash",
+        MaxHoldTime = bb,
+        Last_Did = 0,
+        CoolDown = 0,
+        QuirkMastery = 0
+    }
+};
+for v3, v4 in pairs(Quirk:WaitForChild("Skills"):GetChildren()) do
+    v1[v4.Name] = require(v4);
+end;
+local l__Parent__5 = Quirk;
+local u1 = false;
+local u2 = {
+    Z = v2.Electric_Z,
+    X = v2.Electric_X,
+    C = v2.Electric_C,
+    V = v2.Electric_V,
+    B = v2.Electric_B
+};
+l__Parent__5.Equipped:Connect(function()
+    u1 = true;
+    local v6 = {};
+    local v7, v8, v9 = pairs(u2);
+    while true do
+        local v10, v11 = v7(v8, v9);
+        if not v10 then
+            break;
+        end;
+        table.insert(v6, { v10, v11.Name or v11.Module_Name, v11.QuirkMastery and 0, v6[#v6] and v6[#v6].QuirkMastery or 0 });
+        wait()
+    end;
+    _G.MovesLayout = {
+        Title = "Deku One For All",
+        Slots = v6
+    };
+end);
+
+local l__UserInputService__12 = game:GetService("UserInputService");
+local u3 = {
+    Current = nil,
+    Key_Held = "",
+    Started_Holding = 0,
+    Delay_Before_Next_Skill = 0
+};
+local l__tick__4 = tick;
+local u5 = require(game.ReplicatedStorage.Modules.Client.Character_handler);
+function Cancel()
+    if u3 ~= nil then
+        if u3.Current ~= nil then
+            u3.Current.Last_Did = 0
+            local v13 = false;
+            if v1[u3.Current.Module_Name] ~= nil then
+                v13 = v1[u3.Current.Module_Name];
+            end;
+            u3.Current = nil;
+            u3.Key_Held = "";
+            u3.Started_Holding = 0
+            if v13 ~= nil then
+                if v13.Cancel ~= nil then
+                    v13:Cancel();
+                end;
+            end;
+            u5.Disabled = false;
+        end;
+    end;
+end;
+l__UserInputService__12.InputBegan:Connect(function(p1, p2)
+    if p2 == false and u1 == true then
+        local l__Name__14 = p1.KeyCode.Name;
+        if u2[l__Name__14] ~= nil and u5:Check() == true and u3.Current == nil  then
+            local v15 = u2[l__Name__14];
+            if v15 ~= nil then
+                u5.Disabled = true;
+                u3.Current = v15;
+                u3.Key_Held = l__Name__14;
+                u3.Started_Holding = 0
+                if v1[v15.Module_Name] ~= nil and v1[v15.Module_Name].Hold ~= nil then
+                    v1[v15.Module_Name]:Hold(v15);
+                end;
+            end;
+        end;
+    end;
+end);
+l__UserInputService__12.InputEnded:Connect(function(p3)
+    local l__Name__16 = p3.KeyCode.Name;
+    if #l__Name__16 > 0 and u3.Key_Held == l__Name__16 and u3.Current ~= nil then
+        u3.Current.Last_Did = 0
+        local v17 = false;
+        if v1[u3.Current.Module_Name] ~= nil then
+            v17 = v1[u3.Current.Module_Name];
+        end;
+        u3.Current = nil;
+        u3.Key_Held = "";
+        u3.Started_Holding = 0
+        if v17 ~= nil and v17.UnHold ~= nil then
+            v17:UnHold();
+        end;
+        u5.Disabled = false;
+    end;
+end);
+script.Parent.Unequipped:Connect(function()
+    Cancel();
+end);
